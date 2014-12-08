@@ -1,0 +1,13 @@
+//
+//  UINavigationController+Storyboards.h
+//  Storyboards
+//
+//  Created by Ilya Puchka on 08.12.14.
+//  Copyright (c) 2014 Ilya Puchka. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UINavigationController (Storyboards)
+
+@end
