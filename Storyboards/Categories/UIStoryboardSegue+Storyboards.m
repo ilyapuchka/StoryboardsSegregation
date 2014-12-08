@@ -8,7 +8,9 @@
 
 #import "UIStoryboardSegue+Storyboards.h"
 #include "UIViewController+Storyboards.h"
-#import "NSObject+Swizzling.h"
+#import <objc/runtime.h>
+
+typedef id (*ObjCMsgSendReturnId)(id, SEL, NSString *, UIViewController *, UIViewController *);
 
 @implementation UIStoryboardSegue (Storyboards)
 
@@ -16,15 +18,21 @@
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self swizzleSelector:@selector(initWithIdentifier:source:destination:) withSelector:@selector(storyboards_initWithIdentifier:source:destination:)];
+        [self swizzleInitWithIdentifier];
     });
 }
 
-- (instancetype)storyboards_initWithIdentifier:(NSString *)identifier source:(UIViewController *)source destination:(UIViewController *)destination
++ (void)swizzleInitWithIdentifier
 {
-    return [self storyboards_initWithIdentifier:identifier
-                                         source:source
-                                    destination:[self destinationWithDestination:destination]];
+    SEL sel = @selector(initWithIdentifier:source:destination:);
+    Method method = class_getInstanceMethod([UIStoryboardSegue class], sel);
+    ObjCMsgSendReturnId originalImp = (ObjCMsgSendReturnId)method_getImplementation(method);
+    
+    IMP adjustedImp = imp_implementationWithBlock(^id(UIStoryboardSegue *instance, NSString *identifier, id source, id destination) {
+        return originalImp(instance, sel, identifier, source, [instance destinationWithDestination:destination]);
+    });
+    
+    method_setImplementation(method, adjustedImp);
 }
 
 - (UIViewController *)destinationWithDestination:(UIViewController *)destination

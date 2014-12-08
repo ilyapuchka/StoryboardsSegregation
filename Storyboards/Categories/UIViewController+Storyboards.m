@@ -7,7 +7,6 @@
 //
 
 #import "UIViewController+Storyboards.h"
-#import "NSObject+Swizzling.h"
 #import <objc/runtime.h>
 
 @implementation UIViewController (Storyboards)

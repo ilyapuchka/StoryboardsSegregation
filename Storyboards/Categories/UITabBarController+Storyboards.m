@@ -8,7 +8,9 @@
 
 #import "UITabBarController+Storyboards.h"
 #import "UIViewController+Storyboards.h"
-#import "NSObject+Swizzling.h"
+#import <objc/runtime.h>
+
+typedef void (*ObjCMsgSendReturnNil)(id, SEL);
 
 @implementation UITabBarController (Storyboards)
 
@@ -16,23 +18,38 @@
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self swizzleSelector:@selector(awakeFromNib) withSelector:@selector(storyboards_awakeFromNib)];
+        [self swizzleAwakeFromNib];
     });
 }
 
-- (void)storyboards_awakeFromNib
++ (void)swizzleAwakeFromNib
 {
-    [self storyboards_awakeFromNib];
+    SEL sel = @selector(awakeFromNib);
+    Method method = class_getInstanceMethod([UITabBarController class], sel);
+    ObjCMsgSendReturnNil originalImp = (ObjCMsgSendReturnNil)method_getImplementation(method);
     
-    NSMutableArray *viewControllers = [self.viewControllers mutableCopy];
-    [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController *vc, NSUInteger idx, BOOL *stop) {
+    IMP adjustedImp = imp_implementationWithBlock(^void(UITabBarController *instance) {
+        originalImp(instance, sel);
+        if ([instance class] == [UITabBarController class]) {
+            NSArray *newViewControllers = [instance viewControllersWithViewController:[instance viewControllers]];
+            [instance setViewControllers:newViewControllers];
+        }
+    });
+    
+    method_setImplementation(method, adjustedImp);
+}
+
+- (NSArray *)viewControllersWithViewController:(NSArray *)viewControllers
+{
+    NSMutableArray *mViewControllers = [viewControllers mutableCopy];
+    [viewControllers enumerateObjectsUsingBlock:^(UIViewController *vc, NSUInteger idx, BOOL *stop) {
         UIViewController *newVC = [UIViewController viewControllerFromStoryboardWithName:vc.storyboardName
                                                                 withStoryboardIdentifier:vc.storyboardIdentifier];
         if (newVC) {
-            [viewControllers replaceObjectAtIndex:idx withObject:newVC];
+            [mViewControllers replaceObjectAtIndex:idx withObject:newVC];
         }
     }];
-    [self setViewControllers:viewControllers];
+    return [mViewControllers copy];
 }
 
 @end
