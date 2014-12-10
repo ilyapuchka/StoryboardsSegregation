@@ -30,7 +30,7 @@ typedef void (*ObjCMsgSendReturnNil)(id, SEL);
     
     IMP adjustedImp = imp_implementationWithBlock(^void(UITabBarController *instance) {
         originalImp(instance, sel);
-        if ([instance class] == [UITabBarController class]) {
+        if ([instance isKindOfClass:[UITabBarController class]]) {
             NSArray *newViewControllers = [instance viewControllersWithViewController:[instance viewControllers]];
             [instance setViewControllers:newViewControllers];
         }

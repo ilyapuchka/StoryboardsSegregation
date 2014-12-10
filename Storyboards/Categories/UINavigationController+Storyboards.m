@@ -30,7 +30,7 @@ typedef void (*ObjCMsgSendReturnNil)(id, SEL);
     
     IMP adjustedImp = imp_implementationWithBlock(^void(UINavigationController *instance) {
         originalImp(instance, sel);
-        if ([instance class] == [UINavigationController class]) {
+        if ([instance isKindOfClass:[UINavigationController class]]) {
             NSArray *newViewControllers = [instance viewControllersWithViewController:[instance viewControllers]];
             [instance setViewControllers:newViewControllers];
         }

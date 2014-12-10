@@ -30,7 +30,7 @@ typedef id (*ObjCMsgSendReturnId)(id, SEL, NSString *);
     
     IMP adjustedImp = imp_implementationWithBlock(^id(UITabBarController *instance, NSString *identifier) {
         UIViewController *viewController = originalImp(instance, sel, identifier);
-        if ([instance class] == [UIStoryboard class]) {
+        if ([instance isKindOfClass:[UIStoryboard class]]) {
             UIViewController *newViewController = [UIViewController viewControllerFromStoryboardWithName:viewController.storyboardName withStoryboardIdentifier:viewController.storyboardIdentifier];
             viewController = newViewController?:viewController;
         }
