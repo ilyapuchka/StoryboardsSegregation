@@ -17,8 +17,6 @@
 		09EF1CB71A34D8250045DFFE /* StoryboardsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EF1CB61A34D8250045DFFE /* StoryboardsTests.m */; };
 		09EF1CC11A34D82E0045DFFE /* FirstStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09EF1CC01A34D82E0045DFFE /* FirstStoryboard.storyboard */; };
 		09EF1CCC1A34DD1B0045DFFE /* UIViewController+Storyboards.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EF1CCB1A34DD1B0045DFFE /* UIViewController+Storyboards.m */; };
-		09EF1CD51A3511D90045DFFE /* UITabBarController+Storyboards.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EF1CD41A3511D90045DFFE /* UITabBarController+Storyboards.m */; };
-		09EF1CD81A3511EE0045DFFE /* UINavigationController+Storyboards.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EF1CD71A3511EE0045DFFE /* UINavigationController+Storyboards.m */; };
 		09EF1CDC1A3512A00045DFFE /* UIStoryboardSegue+Storyboards.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EF1CDB1A3512A00045DFFE /* UIStoryboardSegue+Storyboards.m */; };
 		09EF1CE11A3516820045DFFE /* EmbedStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09EF1CE01A3516820045DFFE /* EmbedStoryboard.storyboard */; };
 		09EF1CE41A3517E70045DFFE /* MyCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EF1CE31A3517E70045DFFE /* MyCustomSegue.m */; };
@@ -55,10 +53,6 @@
 		09EF1CC01A34D82E0045DFFE /* FirstStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstStoryboard.storyboard; sourceTree = "<group>"; };
 		09EF1CCA1A34DD1B0045DFFE /* UIViewController+Storyboards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Storyboards.h"; sourceTree = "<group>"; };
 		09EF1CCB1A34DD1B0045DFFE /* UIViewController+Storyboards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Storyboards.m"; sourceTree = "<group>"; };
-		09EF1CD31A3511D90045DFFE /* UITabBarController+Storyboards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+Storyboards.h"; sourceTree = "<group>"; };
-		09EF1CD41A3511D90045DFFE /* UITabBarController+Storyboards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+Storyboards.m"; sourceTree = "<group>"; };
-		09EF1CD61A3511EE0045DFFE /* UINavigationController+Storyboards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Storyboards.h"; sourceTree = "<group>"; };
-		09EF1CD71A3511EE0045DFFE /* UINavigationController+Storyboards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Storyboards.m"; sourceTree = "<group>"; };
 		09EF1CDA1A3512A00045DFFE /* UIStoryboardSegue+Storyboards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboardSegue+Storyboards.h"; sourceTree = "<group>"; };
 		09EF1CDB1A3512A00045DFFE /* UIStoryboardSegue+Storyboards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+Storyboards.m"; sourceTree = "<group>"; };
 		09EF1CE01A3516820045DFFE /* EmbedStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EmbedStoryboard.storyboard; sourceTree = "<group>"; };
@@ -159,10 +153,6 @@
 			children = (
 				09EF1CCA1A34DD1B0045DFFE /* UIViewController+Storyboards.h */,
 				09EF1CCB1A34DD1B0045DFFE /* UIViewController+Storyboards.m */,
-				09EF1CD31A3511D90045DFFE /* UITabBarController+Storyboards.h */,
-				09EF1CD41A3511D90045DFFE /* UITabBarController+Storyboards.m */,
-				09EF1CD61A3511EE0045DFFE /* UINavigationController+Storyboards.h */,
-				09EF1CD71A3511EE0045DFFE /* UINavigationController+Storyboards.m */,
 				09EF1CDA1A3512A00045DFFE /* UIStoryboardSegue+Storyboards.h */,
 				09EF1CDB1A3512A00045DFFE /* UIStoryboardSegue+Storyboards.m */,
 				C3620E1A1A370ACD007E9D09 /* UIStoryboard+Storyboards.h */,
@@ -274,8 +264,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09EF1CD51A3511D90045DFFE /* UITabBarController+Storyboards.m in Sources */,
-				09EF1CD81A3511EE0045DFFE /* UINavigationController+Storyboards.m in Sources */,
 				09EF1CA31A34D8250045DFFE /* SecondViewController.m in Sources */,
 				09EF1C9D1A34D8250045DFFE /* AppDelegate.m in Sources */,
 				09EF1CA01A34D8250045DFFE /* FirstViewController.m in Sources */,
